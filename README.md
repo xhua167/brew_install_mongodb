@@ -11,7 +11,7 @@ brew install mongodb
 mkdir -p /data/db                
 5.Set permissions                      
 sudo chown -R `id -un` /data/db                  
-6.Open another terminal window & run and keep running a mongo server/daemon 
-mongod 
-7.Return to previous terminal and run a mongodb shell to access data 
-mongo 
+6.Open another terminal window & run and keep running a mongo server/daemon     
+mongod      
+7.Return to previous terminal and run a mongodb shell to access data:       
+mongo        
