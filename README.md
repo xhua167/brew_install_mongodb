@@ -21,3 +21,14 @@ mongo
 ## how to drop database in Mongodb
 use dbname
 db.dropDatabase()
+
+#################################################
+## SQL practice
+1. 查找奇数行姓名
+select e.first_name
+from employees e
+join
+(select first_name,row_number() over(order by first_name asc) as row_no 
+from employees) as t 
+on e.first_name = t.first_name and t.row_no % 2 = 1;
+
