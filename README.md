@@ -35,3 +35,15 @@ on e.first_name = t.first_name and t.row_no % 2 = 1;
 2. table中有studentId, studentName, courseId, Score, 找出每个课程最高分的前两位同学。
 select a.studentId, a.studentName, a.courseId, a.Score
 from (select *, row_number() over (order by courseId, Score desc limit 2) as row_num from table) as a;
+
+3. 对一个表新增一列，为每一行之前（包括自己）所有员工的工资之合
+select s1.emp_no, s1.salary,           #子表用两个一样的表做合，如果s1.row>=s2.row则在s2求和as running_total，再select running_total
+(select sum(s2.salary) from salaries s2           
+where s2.emp_no <= s1.emp_no and s2.to_date = '9999-01-01') as running_total        
+from salaries s1 where s1.to_date = '9999-01-01';         
+
+
+
+
+
+
