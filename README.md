@@ -41,7 +41,7 @@ select s1.emp_no, s1.salary,
 (select sum(s2.salary) from salaries s2           
 where s2.emp_no <= s1.emp_no and s2.to_date = '9999-01-01') as running_total        
 from salaries s1 where s1.to_date = '9999-01-01';         
-###思想：子表用两个一样的表做合，如果s1.row>=s2.row则在s2求和as running_total，再select running_total###
+###思想：子表用两个一样的表做和，如果s1.row>=s2.row则在s2求和as running_total，再select running_total###
 
 
 
