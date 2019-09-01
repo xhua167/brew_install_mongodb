@@ -44,7 +44,20 @@ from salaries s1 where s1.to_date = '9999-01-01';
 ###思想：子表用两个一样的表做和，如果s1.row>=s2.row则在s2求和as running_total，再select running_total###
 
 
-
-
+4. 小红书sql题：选出5月分和6月份总gmv最高的前50个商家，输出要求两列：一列月份（2019M5表示5月），一列seller_name
+select p1.月份,p1.seller_name from ( select '2019M5' as 月份, seller_name,sum(gmv) as sum       
+from purchase       
+where month(dt)=5           
+group by seller_name          
+order by sum          
+limit 50) p1          
+union               
+select p2.月份,p2.eller_name from             
+( select '2019M6' as 月份, seller_name,sum(gmv) as sum                
+from purchase             
+where month(dt)=6               
+group by seller_name              
+order by sum              
+limit 50) p2;               
 
 
