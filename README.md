@@ -32,7 +32,7 @@ join
 from employees) as t          
 on e.first_name = t.first_name and t.row_no % 2 = 1;          
 
-2. table中有studentId, studentName, courseId, Score, 找出每个课程最高分的前两位同学。
+2. table中有studentId, studentName, courseId, Score, 找出每个课程最高分的前两位同学。       
 select a.studentId, a.studentName, a.courseId, a.Score
 from (select *, row_number() over (order by courseId, Score desc limit 2) as row_num from table) as a;
 
