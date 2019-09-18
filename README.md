@@ -58,6 +58,30 @@ from purchase
 where month(dt)=6               
 group by seller_name              
 order by sum              
-limit 50) p2;               
+limit 50) p2;            
+
+#DP问题
+#题目：最大奇数约数之合          
+#例如f(44) = 11           
+#输入：n  输出：f(n)+f(n-1)+....+f(1)               
+
+def f(x):                   
+    if x%2 == 1:                    
+        return x                        
+    else:                           
+        x /= 2                            
+        return f(x)                         
+                
+def dp(n):                          
+    if n == 1:                      
+        return 1                        
+    else:                             
+        mem = [0 for x in range(n)]                           
+        mem[0] = 1                            
+        for i in range(1,n):                          
+            mem[i] = f(i+1) + mem[i-1]                            
+    return int(mem[-1])                             
+        
+
 
 
