@@ -58,5 +58,11 @@ from purchase
 where month(dt)=6               
 group by seller_name              
 order by sum              
-limit 50) p2;            
+limit 50) p2;       
+
+
+
+# convert ssl .crt file to  .pfx file               
+openssl pkcs12 -export -out server.pfx -inkey private.key -in certificate.crt                   
+
 
